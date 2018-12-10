@@ -1,0 +1,4 @@
+logstash_conf_dir: /etc/logstash/conf.d
+
+rabbit_user: admin
+rabbit_password: admin 

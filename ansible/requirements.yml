@@ -1,0 +1,8 @@
+- src: geerlingguy.java
+- src: geerlingguy.repo-epel
+- src: geerlingguy.elasticsearch
+- src: geerlingguy.kibana 
+- src: geerlingguy.logstash
+- src: geerlingguy.rabbitmq
+- src: geerlingguy.filebeat
+- src: cloudalchemy.grafana

@@ -1,0 +1,59 @@
+- hosts: all
+  become: yes
+  become_user: root 
+  pre_tasks:
+    - name: Remove swapfile from /etc/fstab
+      mount:
+        name: swap
+        fstype: swap
+        state: absent
+    - name: Disable swap
+      shell: swapoff -a
+    - name: Install base packages
+      package:
+        name: "{{item}}"
+      with_items:
+        - nc
+        - lsof 
+        - tcpdump 
+        - vim
+        - htop
+        - zip
+        - unzip
+        - python2 
+        - python2-pip
+    - pip:
+        name: requests 
+  vars_files:
+    - ../elk.config.yaml 
+  vars: 
+    master_elk_version: '6.x'
+    java_packages:
+      - java-1.8.0-openjdk-devel
+
+    elasticsearch_version: "{{ master_elk_version }}"
+    elasticsearch_network_host: 0.0.0.0 
+
+    logstash_version: "{{ master_elk_version }}"
+    kibana_version: "{{ master_elk_version }}"
+
+    grafana_security:
+      admin_user: admin
+      admin_password: "admin"
+    #  secret_key: ""
+      login_remember_days: 21
+    #  cookie_username: grafana_user
+    #  cookie_remember_name: grafana_remember
+    #  disable_gravatar: true
+    #  data_source_proxy_whitelist:
+  roles:
+    - geerlingguy.repo-epel
+    - geerlingguy.java
+    - geerlingguy.elasticsearch
+    - geerlingguy.logstash
+    - geerlingguy.rabbitmq
+    - geerlingguy.kibana
+    - cloudalchemy.grafana
+    - geerlingguy.filebeat
+    - rabbitmq-config 
+    - logstash-config

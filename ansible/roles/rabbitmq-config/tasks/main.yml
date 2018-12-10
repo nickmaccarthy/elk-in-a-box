@@ -1,0 +1,22 @@
+- name: turn on rabbitmq management plugin
+  shell: rabbitmq-plugins enable rabbitmq_management
+
+- name: create admin user
+  rabbitmq_user:
+    user: admin
+    password: admin
+    vhost: /
+    tags: administrator
+    configure_priv: .*
+    read_priv: .* 
+    write_priv: .*
+    state: present
+
+- name: create default elk queue
+  rabbitmq_queue:
+    name: elk.default
+
+- name: create all other rabbit queues
+  rabbitmq_queue:
+    name: "elk.{{ item }}"
+  with_items: "{{ rabbit_queues }}"

@@ -1,0 +1,6 @@
+ansible/roles/geerlingguy*
+ansible/roles/cloudalchemy*
+*.swp
+*.vscode
+*.vagrant
+*.retry 

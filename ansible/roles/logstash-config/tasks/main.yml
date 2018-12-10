@@ -1,0 +1,22 @@
+- name: ensure default configs are removed
+  file:
+    path: "{{logstash_conf_dir}}/{{item}}"
+    state: absent
+  notify:
+    - restart logstash 
+  with_items:
+    - 11-nginx.conf
+    - 12-apache.conf
+    - 14-solr.conf
+    - 15-drupal.conf
+
+- name: base config templates
+  template:
+    src: "logstash/{{item}}"
+    dest: "{{logstash_conf_dir}}/{{item}}"
+  notify: 
+    - restart logstash
+  with_items:
+    - 01-beats-input.conf
+    - 01-rabbitmq-input.conf
+    - 30-elasticsearch-output.conf
