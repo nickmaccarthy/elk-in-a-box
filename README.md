@@ -20,6 +20,8 @@ In most of my ELK deployments I test to use RabbiqMQ as a log buffer before data
 * Administrative rights on you local machine
 
 ## Ports and Services
+Default VM IP is `192.168.100.150`
+Note: `Vagrant Host Manager` creates the alias `elk.local` on your local machines `/etc/hosts` file.  So you can access this system with `elk.local:<port>` in your browser, or by clikcing the links below.  
 * Elasticsearch `tcp 9200` - [http://elk.local:9200](http://elk.local:9200) - no login
 * Kibana `tcp 5601`- [http://elk.local:5601](http://elk.local:5601) - no login 
 * Grafana `tcp 3000` - [http://elk.local:3000](http://elk.local:3000) - login - admin/admin 
