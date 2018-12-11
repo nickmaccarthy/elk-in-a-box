@@ -20,10 +20,10 @@ In most of my ELK deployments I test to use RabbiqMQ as a log buffer before data
 * Administrative rights on you local machine
 
 ## Ports and Services
-* Elasticsearch - [http://elk.local:9200](http://elk.local:9200)
-* Kibana - [http://elk.local:5601](http://elk.local:5601)
-* Grafana - [http://elk.local:3000](http://elk.local:3000)
-* RabbitMQ - [http://elk.local:15672](http://elk.local:15672)
+* Elasticsearch `tcp 9200` - [http://elk.local:9200](http://elk.local:9200) - no login
+* Kibana `tcp 5601`- [http://elk.local:5601](http://elk.local:5601) - no login 
+* Grafana `tcp 3000` - [http://elk.local:3000](http://elk.local:3000) - login - admin/admin 
+* RabbitMQ `tcp 15672` - [http://elk.local:15672](http://elk.local:15672) - login - admin/admin
 
 ## Usage
 1. Clone this repo to a directory of your choice, and then navigate to that directroy when you get there
