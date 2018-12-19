@@ -6,3 +6,4 @@
 - src: geerlingguy.rabbitmq
 - src: geerlingguy.filebeat
 - src: cloudalchemy.grafana
+- src: crowdskout.elasticsearch-cerebro

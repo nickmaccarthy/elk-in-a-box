@@ -37,6 +37,9 @@
     logstash_version: "{{ master_elk_version }}"
     kibana_version: "{{ master_elk_version }}"
 
+    grafana_plugins:
+      - grafana-worldmap-panel
+      - grafana-clock-panel
     grafana_security:
       admin_user: admin
       admin_password: "admin"
@@ -46,6 +49,14 @@
     #  cookie_remember_name: grafana_remember
     #  disable_gravatar: true
     #  data_source_proxy_whitelist:
+
+    elastic_cerebro_version: 0.8.1
+    elastic_cerebro_port: 9000
+    elasticsearch_cerebro_secret: XjcJlasnmdfml2!#.1m
+    elasticsearch_cerebro_hosts:
+      - host: http://localhost:9200
+        name: elk.local
+
   roles:
     - geerlingguy.repo-epel
     - geerlingguy.java
@@ -55,5 +66,6 @@
     - geerlingguy.kibana
     - cloudalchemy.grafana
     - geerlingguy.filebeat
+    - crowdskout.elasticsearch-cerebro
     - rabbitmq-config 
     - logstash-config

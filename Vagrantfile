@@ -38,8 +38,8 @@ Vagrant.configure("2") do |config|
     config.hostmanager.aliases = %w(elk.local elk.localhost elk)
 
     config.vm.provider "virtualbox" do |vb|
-      vb.cpus = elk_config.fetch(:vm_cpus, 4)
-      vb.memory = elk_config.fetch(:vm_memory, 4096)
+      vb.cpus = elk_config.fetch("vm_cpus", 4)
+      vb.memory = elk_config.fetch("vm_memory", 4096)
     end
 
      # Provision hostnmanager

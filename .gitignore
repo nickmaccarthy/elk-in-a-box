@@ -1,5 +1,6 @@
 ansible/roles/geerlingguy*
 ansible/roles/cloudalchemy*
+ansible/roles/crowdskout*
 *.swp
 *.vscode
 *.vagrant
