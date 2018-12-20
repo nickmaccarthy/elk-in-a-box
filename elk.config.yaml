@@ -9,3 +9,13 @@ master_elk_version: '6.x'
 # What rabbit queues we want to create on the system 
 rabbit_queues:
   - default 
+
+
+# Enables or disables the serveices on an initial vagrant up
+enable_elasticsearch: true
+enable_logstash: true 
+enable_filebeat: true 
+enable_rabbitmq: true 
+enable_kibana: true 
+enable_grafana: true 
+enable_cerebro: true 

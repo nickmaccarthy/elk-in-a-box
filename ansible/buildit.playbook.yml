@@ -40,6 +40,7 @@
     grafana_plugins:
       - grafana-worldmap-panel
       - grafana-clock-panel
+
     grafana_security:
       admin_user: admin
       admin_password: "admin"
@@ -59,13 +60,33 @@
 
   roles:
     - geerlingguy.repo-epel
-    - geerlingguy.java
-    - geerlingguy.elasticsearch
-    - geerlingguy.logstash
-    - geerlingguy.rabbitmq
-    - geerlingguy.kibana
-    - cloudalchemy.grafana
-    - geerlingguy.filebeat
-    - crowdskout.elasticsearch-cerebro
-    - rabbitmq-config 
-    - logstash-config
+
+    - role: geerlingguy.java
+      when: enable_elasticsearch or enable_logstash
+
+    - role: geerlingguy.elasticsearch
+      when: enable_elasticsearch
+
+    - role: geerlingguy.logstash
+      when: enable_logstash
+
+    - role: geerlingguy.rabbitmq
+      when: enable_rabbitmq
+
+    - role: geerlingguy.kibana
+      when: enable_kibana
+
+    - role: cloudalchemy.grafana
+      when: enable_grafana
+
+    - role: geerlingguy.filebeat
+      when: enable_filebeat
+
+    - role: crowdskout.elasticsearch-cerebro
+      when: enable_cerebro
+
+    - role: rabbitmq-config 
+      when: enable_rabbitmq
+
+    - role: logstash-config
+      when: enable_logstash

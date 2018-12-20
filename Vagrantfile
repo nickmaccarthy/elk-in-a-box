@@ -35,6 +35,10 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = "elk"
     config.vm.network "private_network", ip: elk_config.fetch(:vm_ip_address, '192.168.100.150')
 
+    if elk_config.fetch("enable_public_network", false) 
+      config.vm.network "public_network"
+    end 
+
     config.hostmanager.aliases = %w(elk.local elk.localhost elk)
 
     config.vm.provider "virtualbox" do |vb|
